@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 轻量导航与持续关注</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9f6f0;
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            color: #2c2b28;
+            line-height: 1.65;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e3ddd3;
+            margin-bottom: 3rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #5b4f3e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            transition: color 0.15s;
+        }
+
+        .nav a:hover {
+            color: #b76e3d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a:first-child {
+            color: #2c2b28;
+            font-weight: 600;
+        }
+
+        .brand {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .brand em {
+            font-style: normal;
+            color: #b76e3d;
+        }
+
+        /* hero 区域 – 强调再次访问与收藏 */
+        .hero {
+            margin-bottom: 3.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            color: #1f1e1b;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: #ece7dd;
+            padding: 0.1rem 0.4rem;
+        }
+
+        .hero p {
+            max-width: 720px;
+            font-size: 1.08rem;
+            color: #55524b;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.75rem 1.2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tagline {
+            background: #e3ddd3;
+            padding: 0.35rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #4d4437;
+            font-weight: 450;
+            display: inline-block;
+        }
+
+        .hero-actions a {
+            background: transparent;
+            border: 1px solid #cdc3b4;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3f3a32;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .hero-actions a:hover {
+            background: #b76e3d;
+            border-color: #b76e3d;
+            color: #fff;
+        }
+
+        /* 介绍块 – 自然嵌入链接 */
+        .intro-block {
+            background: #ffffffec;
+            padding: 1.8rem 2rem;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin-bottom: 3rem;
+            border-left: 4px solid #cdb8a2;
+        }
+
+        .intro-block p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-block a {
+            color: #b76e3d;
+            text-decoration: underline;
+            text-underline-offset: 0.12em;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #d5c5b0;
+        }
+
+        .intro-block a:hover {
+            text-decoration-color: #b76e3d;
+        }
+
+        .intro-block .highlight-box {
+            background: #f4efe7;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border-radius: 2px;
+            font-size: 0.95rem;
+            color: #3f3a32;
+            border: 1px solid #e3d9ce;
+        }
+
+        /* 场景模块（三个） */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 2px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #ede7de;
+            transition: box-shadow 0.15s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 540;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.9rem;
+            color: #2b2823;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #59544b;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-card .meta-note {
+            font-size: 0.8rem;
+            color: #8e8579;
+            border-top: 1px solid #efe9e1;
+            padding-top: 0.9rem;
+            margin-top: 0.9rem;
+        }
+
+        .scene-card .badge {
+            display: inline-block;
+            background: #ede7dc;
+            padding: 0.1rem 0.8rem;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            color: #4d4437;
+            margin-top: 0.4rem;
+        }
+
+        /* FAQ 摘要 / 常见说明 */
+        .faq-section {
+            background: #f4f0e9;
+            padding: 2rem 2rem 2.2rem;
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 530;
+            color: #1f1e1b;
+            margin-bottom: 1.6rem;
+            position: relative;
+        }
+
+        .faq-section h2:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #b76e3d;
+            margin-top: 0.4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e3d9ce;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            margin-bottom: 0.25rem;
+            color: #2c2b28;
+        }
+
+        .faq-item p {
+            font-size: 0.93rem;
+            color: #55524b;
+        }
+
+        .faq-item a {
+            color: #b76e3d;
+            text-decoration: underline;
+            text-underline-offset: 0.12em;
+        }
+
+        /* 底部 */
+        .footer-note {
+            border-top: 1px solid #e3ddd3;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            color: #7d7569;
+        }
+
+        .footer-note a {
+            color: #7d7569;
+            text-decoration: underline;
+            text-underline-offset: 0.1em;
+        }
+
+        .footer-note a:hover {
+            color: #b76e3d;
+        }
+
+        /* 响应式 */
+        @media (max-width: 850px) {
+            .scenes-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .intro-block {
+                padding: 1.4rem 1.2rem;
+            }
+            .faq-section {
+                padding: 1.5rem 1.2rem;
+            }
+            body {
+                padding: 1rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <div class="brand">✦ <em>爱游戏</em></div>
+        <div class="nav-links">
+            <a href="#">首页</a>
+            <a href="#">更新</a>
+            <a href="#">书签</a>
+            <a href="#">关于</a>
+        </div>
+    </nav>
+
+    <!-- hero：再次访问、收藏 -->
+    <div class="hero">
+        <h1>再次打开，<span>和上次一样</span>顺手</h1>
+        <p>无需重新适应——收藏当前页，下次回来仍能快速定位。保持轻量的浏览习惯，从一次稳定的入口开始。</p>
+        <div class="hero-actions">
+            <span class="tagline">✦ 持续关注</span>
+            <a href="#">收藏本页</a>
+            <a href="#">了解变化</a>
+        </div>
+    </div>
+
+    <!-- 介绍块，自然嵌入链接 -->
+    <div class="intro-block">
+        <p>如果你常常浏览或偶尔回看，把 <a href="https://m-zh-i-game.com.cn">爱游戏</a> 加入书签栏是最直接的做法。页面结构和信息层级经过整理，无论第几次访问，导航逻辑保持一致，减少重复寻找的成本。</p>
+        <p>订阅或定期回访，能留意到细节调整。本页下方整理了常见疑问，方便在需要时对照。</p>
+        <div class="highlight-box">
+            📌 提示：将本页加入浏览器收藏夹，或直接记住 <a href="https://m-zh-i-game.com.cn">爱游戏</a> 的地址，下次无需搜索即可到达。
+        </div>
+        <p style="margin-bottom: 0;">整个站点围绕「轻量信息」设计，不堆砌弹窗，不制造冗余跳转。页面更新会记录在单独的 changelog 区域。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>场景 · 回看</h3>
+            <p>隔一段时间再回来，希望之前看过的内容仍然可及。本页在结构上没有突然的大幅变动，模块保持稳定。</p>
+            <div class="badge">稳定布局</div>
+            <div class="meta-note">上次访问留下的位置依然有效</div>
+        </div>
+        <div class="scene-card">
+            <h3>场景 · 收藏</h3>
+            <p>把链接固定在浏览器书签栏或笔记应用里。 <a href="https://m-zh-i-game.com.cn">爱游戏</a> 的 URL 简短，适合手动输入或分享给朋友。</p>
+            <div class="badge">短链 · 易记</div>
+            <div class="meta-note">无追踪参数，复制即可使用</div>
+        </div>
+        <div class="scene-card">
+            <h3>场景 · 关注</h3>
+            <p>不定期查看是否有新模块或内容调整。我们会在页面底部提供简短的变更摘要，不需要每次都从头扫描。</p>
+            <div class="badge">变更可追溯</div>
+            <div class="meta-note">建议每两到三周回访一次</div>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-section">
+        <h2>常见说明</h2>
+
+        <div class="faq-item">
+            <strong>▎ 是否需要登录或注册？</strong>
+            <p>当前页面以及站内主要信息区域均无需注册。部分交互功能（如有）会单独说明，使用前可留意提示。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>▎ 页面结构会频繁改动吗？</strong>
+            <p>核心导航与模块顺序会保持相对稳定。若有必要调整，会在本页顶部或 changelog 中提前标注。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>▎ 怎样最快回到这个页面？</strong>
+            <p>将 <a href="https://m-zh-i-game.com.cn">爱游戏</a> 添加到浏览器书签栏，或者使用快捷键 Ctrl+D / ⌘+D 收藏。移动端可添加到主屏幕。</p>
+        </div>
+
+        <div class="faq-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+            <strong>▎ 内容是否定期更新？</strong>
+            <p>更新节奏不固定，但每次变更都会保留日期标记。你可以在 <a href="https://m-zh-i-game.com.cn">爱游戏</a> 的页面底部找到最近一次修订时间。</p>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>爱游戏 · 轻量导航页</span>
+        <span>
+            <a href="#">收藏指引</a> · <a href="#">更新记录</a>
+        </span>
+    </div>
+
+</div>
+</body>
+</html>
