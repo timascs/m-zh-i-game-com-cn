@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一段关于联结的叙述 · 球盟会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf6f0;
+            font-family: Georgia, 'Times New Roman', 'Noto Serif SC', serif;
+            line-height: 1.7;
+            color: #3e3a36;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+            background: #fffcf8;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+            border-radius: 28px;
+            padding: 2.5rem 2rem 3rem;
+            margin: 1.5rem 0 3rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 560px) {
+            body { padding: 1rem 0.8rem; }
+            .page { padding: 1.8rem 1.2rem 2.2rem; border-radius: 20px; }
+        }
+
+        /* 开场短句 */
+        .opening {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            line-height: 1.5;
+            margin-bottom: 2.2rem;
+            padding-left: 1.2rem;
+            border-left: 4px solid #d6c7b3;
+            font-style: normal;
+            color: #4f4842;
+        }
+
+        .opening em {
+            font-style: italic;
+            color: #7e6b59;
+        }
+
+        /* 承接段落 */
+        .lead {
+            font-size: 1.05rem;
+            margin: 1.8rem 0 2rem;
+            padding: 1.2rem 1.5rem;
+            background: #f3ede5;
+            border-radius: 18px;
+            color: #3d362f;
+            text-align: justify;
+        }
+
+        .lead a, .inline-link a {
+            color: #8b6f54;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8a28c;
+            transition: border 0.2s;
+        }
+
+        .lead a:hover, .inline-link a:hover {
+            border-bottom: 1px solid #5c4a38;
+        }
+
+        /* 特点区域 —— 用引用块形式 */
+        .feature-block {
+            margin: 2.5rem 0 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .feature-item {
+            background: #faf6f0;
+            padding: 1rem 1.3rem 1rem 2rem;
+            border-radius: 40px 16px 16px 40px;
+            border-left: 6px solid #cbb9a5;
+            font-size: 1rem;
+            position: relative;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-item strong {
+            font-weight: 600;
+            color: #5f4d3b;
+            margin-right: 0.4rem;
+        }
+
+        /* 一个温和的提示框/引述块 */
+        .note-box {
+            background: #efe9e0;
+            border-radius: 24px;
+            padding: 1.5rem 1.8rem;
+            margin: 2.2rem 0 1.8rem;
+            border: 1px solid #ddd3c6;
+            box-shadow: inset 0 1px 4px rgba(255, 250, 240, 0.6);
+            font-size: 0.98rem;
+            color: #4b423a;
+        }
+
+        .note-box::before {
+            content: "❝";
+            font-size: 2rem;
+            color: #b7a48f;
+            margin-right: 6px;
+            opacity: 0.5;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        .note-box .attribution {
+            display: block;
+            text-align: right;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #8f7e6d;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2d6ca;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #6a5c4e;
+            letter-spacing: 0.3px;
+        }
+
+        .closing .brand {
+            font-weight: 400;
+            color: #7f6956;
+        }
+
+        .closing a {
+            color: #5d4b38;
+            text-decoration: none;
+            border-bottom: 1px solid #cfbfaf;
+        }
+
+        .closing a:hover {
+            border-bottom: 1px solid #3b2f25;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7ddd1;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        /* FAQ 摘要 —— 简练自然 */
+        .faq-mini {
+            margin: 2rem 0 1.2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .faq-mini { grid-template-columns: 1fr; }
+        }
+
+        .faq-card {
+            background: #f8f3ec;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e6dcd0;
+        }
+
+        .faq-card .q {
+            font-weight: 600;
+            color: #5d4d3b;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-card .a {
+            font-size: 0.9rem;
+            color: #5e554b;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 开场短句 -->
+        <div class="opening">
+            某个傍晚，<em>人们开始谈论</em>一种更自如的联结方式。
+        </div>
+
+        <!-- 承接段落：从关键词背后的主题展开 -->
+        <p class="lead">
+            从聊天室到兴趣群组，再到围绕共同话题形成的小生态，线上社区的面貌一直在变。而「<a href="https://cn-zh-qmh.com">球盟会</a>」这个词所指向的，正是一种把日常分享、话题讨论和内容发现融合在一起的氛围——它不属于某个单一的 App，而更像一种温和的聚合方式。有人在这里寻找同好，有人记录碎片思考，也有人只是安静地浏览。它不喧哗，但始终存在，像客厅里一盏不刺眼的落地灯。
+        </p>
+
+        <!-- 特点列表（以引用块风格呈现） -->
+        <div class="feature-block">
+            <div class="feature-item">
+                <strong>· 话题自然生长</strong> 不依赖算法强推，而是由参与者的真实兴趣逐步延伸。
+            </div>
+            <div class="feature-item">
+                <strong>· 节奏由自己决定</strong> 可以深度参与讨论，也可以只做旁观者，没有人催促表态。
+            </div>
+            <div class="feature-item">
+                <strong>· 内容偏重质感</strong> 鼓励有头有尾的分享，而不仅仅是一闪而过的消息流。
+            </div>
+            <div class="feature-item">
+                <strong>· 身份轻量化</strong> 不需要复杂的个人档案，一个昵称、一段简介就足够开始交流。
+            </div>
+        </div>
+
+        <!-- 温和的提示/引述块 -->
+        <div class="note-box">
+            前阵子看到有人说：“好的线上社区，应该让人离开时比进来时多了一点东西——一个观点、一首歌、或只是半句安慰。” 
+            我想，<a href="https://cn-zh-qmh.com">球盟会</a> 所承载的，大概就是这种“多一点”的温度。
+            <span class="attribution">—— 摘自一位用户的随笔</span>
+        </div>
+
+        <!-- 场景 / 使用感受（简练） -->
+        <p style="margin: 1.4rem 0 0.8rem; text-align: justify; font-size: 1rem; color: #4d443b;">
+            你可以把它想象成一个有回廊的庭院：有人在中央的亭子里聊最近看的书，有人在角落的长椅上分享自制的音乐列表，还有人只是靠在墙边看树叶晃动。没有强制的话题，没有排行榜，没有小红点焦虑。<strong>它不追求日活，只在意连接是否真实。</strong>
+        </p>
+
+        <!-- FAQ 摘要（两个卡片） -->
+        <div class="faq-mini">
+            <div class="faq-card">
+                <div class="q">❓ 适合什么样的人？</div>
+                <div class="a">喜欢慢节奏交流、对内容质量有要求、不愿被信息流推着走的人。</div>
+            </div>
+            <div class="faq-card">
+                <div class="q">❓ 从哪里开始？</div>
+                <div class="a">进入 <a href="https://cn-zh-qmh.com" style="color:#6f5b47; text-decoration: underline 1px dotted;">球盟会</a> 的主页，浏览当前被推荐的话题，或者直接发起一个你感兴趣的主题。门槛很低，就像推开门走进一间公共客厅。</div>
+            </div>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="closing">
+            <span class="brand">球盟会</span> 不是一个需要“攻克”的站点，它更接近一个可以随时抵达、随时离开的角落。<br>
+            如果你恰好也在寻找这样一种氛围，不妨去 <a href="https://cn-zh-qmh.com">球盟会</a> 看看——也许那里正有一场安静的对话在等你。
+        </div>
+
+        <hr>
+        <p style="text-align: center; font-size: 0.8rem; color: #b4a494; margin-top: 0.5rem; letter-spacing: 1px;">
+            —— 一篇关于联结的笔记 · 不必刻意，自然就好 ——
+        </p>
+
+    </div>
+</body>
+</html>
