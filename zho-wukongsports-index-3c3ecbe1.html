@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>悟空体育 · 简明访问指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fbe9e7 0%, #f8d5c5 40%, #f3c4ab 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.25rem;
+      line-height: 1.6;
+      color: #2d2a24;
+    }
+
+    .page-wrapper {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    /* 主视觉卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 12px 28px rgba(180, 100, 60, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2.8rem 2.5rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 16px 36px rgba(180, 100, 60, 0.18), 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #f3d5b5;
+      color: #6b4a2e;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      color: #3e2c1c;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-summary {
+      font-size: 1rem;
+      color: #4d3e2f;
+      margin-bottom: 1.6rem;
+      border-left: 3px solid #dbaa85;
+      padding-left: 1.25rem;
+    }
+
+    .hero-summary strong {
+      color: #7a562e;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 6px 16px rgba(160, 90, 50, 0.08);
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(160, 90, 50, 0.12);
+    }
+
+    .info-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #5b3d28;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card h2::before {
+      content: "▸";
+      color: #c4875e;
+      font-size: 1.1rem;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      color: #3f362d;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+
+    .info-card li {
+      padding: 0.35rem 0 0.35rem 1.6rem;
+      position: relative;
+      font-size: 0.92rem;
+      color: #3f362d;
+    }
+
+    .info-card li::before {
+      content: "·";
+      position: absolute;
+      left: 0.4rem;
+      color: #b87a56;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* 适合人群卡片特殊标记 */
+    .audience-card li::before {
+      content: "→";
+      font-size: 0.9rem;
+      left: 0.2rem;
+      color: #b0734b;
+    }
+
+    /* 自然链接段落 — 按钮感 */
+    .link-block {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 1.8rem 2.2rem;
+      margin: 1.8rem 0 2rem;
+      box-shadow: 0 6px 18px rgba(160, 90, 50, 0.08);
+      text-align: center;
+    }
+
+    .link-block p {
+      font-size: 1rem;
+      color: #3c3229;
+      margin-bottom: 0.3rem;
+    }
+
+    .link-block a {
+      display: inline-block;
+      background: #dbaa85;
+      color: #2a1f16;
+      text-decoration: none;
+      font-weight: 650;
+      font-size: 1.05rem;
+      padding: 0.7rem 2.2rem;
+      border-radius: 60px;
+      box-shadow: 0 4px 8px rgba(150, 75, 35, 0.15);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+      letter-spacing: 0.02em;
+      margin: 0.2rem 0;
+    }
+
+    .link-block a:hover {
+      background: #cf9a73;
+      box-shadow: 0 6px 14px rgba(150, 75, 35, 0.2);
+      transform: scale(1.02);
+    }
+
+    .link-block a:active {
+      transform: scale(0.97);
+    }
+
+    /* FAQ 摘要卡片 */
+    .faq-summary {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 6px 16px rgba(160, 90, 50, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #5b3d28;
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid #ebd6c5;
+      padding-bottom: 0.5rem;
+    }
+
+    .faq-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #6b4a2e;
+      min-width: 5.2rem;
+      font-size: 0.9rem;
+    }
+
+    .faq-a {
+      color: #3f362d;
+      font-size: 0.9rem;
+    }
+
+    .faq-a a {
+      color: #8a5f3d;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .faq-a a:hover {
+      color: #b0734b;
+    }
+
+    /* 简洁底部 */
+    .footer-note {
+      text-align: center;
+      color: #6c5a48;
+      font-size: 0.8rem;
+      border-top: 1px solid #e1cbbc;
+      padding-top: 1.5rem;
+      margin-top: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.25rem 0.75rem;
+      }
+
+      .hero-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 1.8rem;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero-summary {
+        font-size: 0.92rem;
+        padding-left: 0.9rem;
+      }
+
+      .info-card {
+        padding: 1.3rem 1.2rem;
+        border-radius: 1.4rem;
+      }
+
+      .info-card h2 {
+        font-size: 1.1rem;
+      }
+
+      .link-block {
+        padding: 1.5rem 1rem;
+      }
+
+      .link-block a {
+        padding: 0.6rem 1.8rem;
+        font-size: 1rem;
+      }
+
+      .faq-summary {
+        padding: 1.2rem 1rem;
+      }
+
+      .faq-item {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .faq-q {
+        min-width: auto;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 840px) {
+      .hero-card {
+        padding: 2.2rem 1.8rem;
+      }
+
+      .info-card {
+        padding: 1.4rem 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- 主视觉区 -->
+    <div class="hero-card">
+      <div class="hero-tag">简明指南 · 访问提示</div>
+      <h1>悟空体育 &nbsp;平台速览</h1>
+      <div class="hero-summary">
+        <strong>信息卡片式介绍</strong> —— 从用途、适合人群到访问细节，三分钟掌握核心。<br>
+        本页作为实用指引，帮助你快速判断使用场景，并了解如何直接访问服务。
+      </div>
+      <p style="font-size:0.95rem; color:#4f4236;">
+        悟空体育聚合多种体育内容与互动功能，界面清晰，注册流程简洁。以下卡片梳理了主要用途与适配人群，并附上访问链接。
+      </p>
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+      <div class="info-card">
+        <h2>平台用途聚焦</h2>
+        <p>面向体育资讯浏览、赛事动态跟踪及基础社区互动。主要覆盖以下方向：</p>
+        <ul>
+          <li>实时比分、赛程与数据摘要</li>
+          <li>多项目新闻聚合（足球、篮球、网球等）</li>
+          <li>用户观点分享与轻量讨论</li>
+        </ul>
+      </div>
+
+      <!-- 适合人群卡片 -->
+      <div class="info-card audience-card">
+        <h2>适合人群参考</h2>
+        <ul>
+          <li>日常关注体育资讯，希望快速获取赛事动态的普通爱好者</li>
+          <li>需要浏览多来源体育内容聚合的新用户</li>
+          <li>偏好简洁界面、无需复杂注册即可浏览的访客</li>
+        </ul>
+        <p style="margin-top:0.7rem; font-size:0.9rem; color:#5d4c3a;">
+          ⚡ 如果你符合以上任意描述，可以进一步了解平台细节。
+        </p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落 + 按钮感链接 -->
+    <div class="link-block">
+      <p>直接访问服务页面，开始了解内容与功能：</p>
+      <a href="https://zho-wukongsports.com">悟空体育</a>
+      <p style="margin-top:0.5rem; font-size:0.85rem; color:#5c4b3a;">
+        （链接将打开资源主站，建议使用现代浏览器以获得完整显示）
+      </p>
+    </div>
+
+    <!-- FAQ 摘要卡片（兼具访问提醒） -->
+    <div class="faq-summary">
+      <h3>常见疑问摘要 · 访问提醒</h3>
+      <div class="faq-item">
+        <span class="faq-q">是否需要注册？</span>
+        <span class="faq-a">部分内容浏览无需注册；互动功能需创建账号。注册流程约 1 分钟。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">内容语言？</span>
+        <span class="faq-a">主要为中文，部分赛事数据包含英文术语。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">最佳体验建议</span>
+        <span class="faq-a">使用桌面或平板设备访问 <a href="https://zho-wukongsports.com">悟空体育</a>，移动端浏览器也可正常加载。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">数据更新</span>
+        <span class="faq-a">赛事数据通常延迟 2–5 分钟，以官方源为准。</span>
+      </div>
+    </div>
+
+    <!-- 尾部自然提及（非链接） -->
+    <div class="footer-note">
+      基于简明访问指南 · 信息卡片式概览 · 内容仅供了解参考
+    </div>
+  </div>
+</body>
+</html>
